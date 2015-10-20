@@ -1,29 +1,22 @@
-<p id="notice"><%= notice %></p>
+<div class="page-header">
+ <%= button_to 'New Word', new_definition_path, class: "btn btn-default", method: :get %>
 
-<h1>Listing Definitions</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Word</th>
-      <th>Meaning</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @definitions.each do |definition| %>
+  <table class="table table-condensed table-hover">
+    <thead>
       <tr>
-        <td><%= definition.word %></td>
-        <td><%= definition.meaning %></td>
-        <td><%= link_to 'Show', definition %></td>
-        <td><%= link_to 'Edit', edit_definition_path(definition) %></td>
-        <td><%= link_to 'Destroy', definition, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Word</th>
+        <th>Meaning</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
-
-<%= link_to 'New Definition', new_definition_path %>
+    <tbody id="definition_list">
+      <%= render @definitions %>
+    </tbody>
+  </table>
+  <p>
+  <% if @search %>
+    Back to <%= link_to 'Home', definitions_path %>
+  <% end %>
+  <p>
+</div>

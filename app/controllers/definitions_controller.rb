@@ -18,6 +18,11 @@ class DefinitionsController < ApplicationController
     @definition = Definition.new
   end
 
+  def search
+    @search = params[:q]
+    @definitions = Definition.search(@search)
+  end
+
   # GET /definitions/1/edit
   def edit
   end
