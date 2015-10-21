@@ -5,6 +5,12 @@
   <%= @definition.word %>
 </p>
 
+<% if @topic.google_results %>
+  <%= @topic.google_results.html_safe %>
+<% else %>
+   No google results yet!
+<% end %>
+
 <p>
   <strong>Meaning:</strong>
   <%= @definition.meaning %>

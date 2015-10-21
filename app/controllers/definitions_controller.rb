@@ -1,3 +1,5 @@
+require 'open-uri'
+
 class DefinitionsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show, :search]
   before_action :set_definition, only: [:show, :edit, :update, :destroy]
@@ -34,6 +36,7 @@ class DefinitionsController < ApplicationController
 
     respond_to do |format|
       if @definition.save
+        GoogleSearchDefinition.perform_async(@definition.id)
         format.html { redirect_to @definition, notice: 'Definition was successfully created.' }
         format.json { render :show, status: :created, location: @definition }
       else
@@ -42,6 +45,14 @@ class DefinitionsController < ApplicationController
       end
     end
   end
+
+  def delete
+   @topic = Topic.find(params[:id])
+
+   InterestEmailSender.new(@topic).send_email
+
+   @topic.destroy
+ end
 
   # PATCH/PUT /definitions/1
   # PATCH/PUT /definitions/1.json
