@@ -11,14 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151021175508) do
+ActiveRecord::Schema.define(version: 20151207041603) do
 
   create_table "definitions", force: :cascade do |t|
     t.string   "word"
     t.text     "meaning"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.text     "google_results"
+    t.string   "word_type"
   end
 
   create_table "users", force: :cascade do |t|

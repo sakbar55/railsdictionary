@@ -36,7 +36,7 @@ class DefinitionsController < ApplicationController
 
     respond_to do |format|
       if @definition.save
-        GoogleSearchDefinition.perform_async(@definition.id)
+        # GoogleSearchDefinition.perform_async(@definition.id)
         format.html { redirect_to @definition, notice: 'Definition was successfully created.' }
         format.json { render :show, status: :created, location: @definition }
       else
@@ -86,6 +86,6 @@ class DefinitionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def definition_params
-      params.require(:definition).permit(:word, :meaning)
+      params.require(:definition).permit(:word, :meaning, :word_type)
     end
 end

@@ -5,8 +5,8 @@
   <%= @definition.word %>
 </p>
 
-<% if @topic.google_results %>
-  <%= @topic.google_results.html_safe %>
+<% if @definition.google_results %>
+  <%= @definition.google_results.html_safe %>
 <% else %>
    No google results yet!
 <% end %>
@@ -14,6 +14,11 @@
 <p>
   <strong>Meaning:</strong>
   <%= @definition.meaning %>
+</p>
+
+<p>
+  <strong>Word Type:</strong>
+  <%= @definition.word_type %>
 </p>
 
 <%= link_to 'Edit', edit_definition_path(@definition) %> |
